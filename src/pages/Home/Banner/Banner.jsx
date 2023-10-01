@@ -2,10 +2,11 @@ import img1 from '../../../assets/images/banner/1.jpg';
 import img2 from '../../../assets/images/banner/2.jpg';
 import img3 from '../../../assets/images/banner/3.jpg';
 import img4 from '../../../assets/images/banner/4.jpg';
-
+import './Banner.css'
 const Banner = () => {
     return (
-        <div className="carousel w-full h-[600px]">
+        <div>
+            <div className="carousel w-full h-[600px]">
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={img1} className="w-full rounded-xl" />
                 <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
@@ -74,6 +75,8 @@ const Banner = () => {
                     <a href="#slide1" className="btn btn-circle">❯</a>
                 </div>
             </div>
+        </div>
+
         </div>
     );
 };

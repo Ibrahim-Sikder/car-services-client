@@ -21,9 +21,10 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                console.log(user)
                 navigate(from, { replace: true })
-
+              
+              
                 
 
             })

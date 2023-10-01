@@ -2,18 +2,28 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const Bookings = () => {
     const [bookings, setBookings] = useState()
-    console.log(bookings)
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext);
     const url = `http://localhost:5000/book?email=${user.email}`
     useEffect(()=>{
-        fetch(url)
+        fetch(url,{
+            method: "GET",
+            headers: {
+                authorization : `Bearer ${localStorage.getItem('access_token')}`
+            }
+        })
         .then(res=>res.json())
         .then(data=>{
+           if(!data.error){
             setBookings(data)
+           }else{
+            navigate('/')
+           }
         })
     },[url])
 
@@ -96,6 +106,7 @@ const Bookings = () => {
                     </thead>
                     <tbody>
                         {
+                            bookings && 
                             bookings?.map(booking => <BookingRow
                                 key={booking._id}
                                 booking={booking}
