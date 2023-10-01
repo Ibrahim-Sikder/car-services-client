@@ -9,7 +9,7 @@ const Services = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
+        fetch(`http://localhost:5000/services`)
             .then(res => res.json())
             .then(data => setServices(data));
     }, [asc, search])

@@ -19,6 +19,7 @@ const ServiceCard = ({ service }) => {
             </div>
         </div>
     );
+    
 };
 
 export default ServiceCard;

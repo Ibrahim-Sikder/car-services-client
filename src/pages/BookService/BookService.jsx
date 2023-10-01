@@ -1,11 +1,14 @@
 import { useContext } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const BookService = () => {
     const service = useLoaderData();
     const { title, _id, price, img } = service;
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleBookService = event =>{
         event.preventDefault();
@@ -25,21 +28,28 @@ const BookService = () => {
         }
 
         console.log(booking);
-
-        fetch('https://car-doctor-server-smoky.vercel.app/bookings', {
-            method: 'POST', 
-            headers: {
+        fetch('http://localhost:5000/book', {
+            method: "POST",
+            headers:{
                 'content-type': 'application/json'
-            }, 
+            },
             body: JSON.stringify(booking)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
+        .then(res=>res.json())
+        .then(data=>{
             if(data.insertedId){
-                alert('service book successfully')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  navigate('/')
             }
         })
+
+       
 
     }
 
