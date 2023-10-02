@@ -28,7 +28,7 @@ const BookService = () => {
         }
 
         console.log(booking);
-        fetch('http://localhost:5000/book', {
+        fetch('https://car-server-lypyd4cek-ibrahim-sikder.vercel.app/book', {
             method: "POST",
             headers:{
                 'content-type': 'application/json'

@@ -9,7 +9,7 @@ const Bookings = () => {
     const [bookings, setBookings] = useState()
     const navigate = useNavigate()
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/book?email=${user.email}`
+    const url = `https://car-server-lypyd4cek-ibrahim-sikder.vercel.app/book?email=${user.email}`
     useEffect(()=>{
         fetch(url,{
             method: "GET",
@@ -39,7 +39,7 @@ const Bookings = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/book/${id}`, {
+                fetch(`https://car-server-lypyd4cek-ibrahim-sikder.vercel.app/book/${id}`, {
                     method: "DELETE"
                 })
                 .then(res=>res.json())
@@ -63,7 +63,7 @@ const Bookings = () => {
 
     }
     const handleBookingConfirm = id =>{
-        fetch(`http://localhost:5000/book/${id}`,{
+        fetch(`https://car-server-lypyd4cek-ibrahim-sikder.vercel.app/book/${id}`,{
             method: "PATCH",
             headers:{
                 'content-type': 'application/json'

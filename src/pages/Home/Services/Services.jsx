@@ -9,7 +9,7 @@ const Services = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services`)
+        fetch(`https://car-server-lypyd4cek-ibrahim-sikder.vercel.app/services`)
             .then(res => res.json())
             .then(data => setServices(data));
     }, [asc, search])
